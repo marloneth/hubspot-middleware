@@ -4,6 +4,12 @@ import { respondError, respondSuccess } from '../../utils/response';
 
 const logger = createLogger('resources/contact/deleteContact.js');
 
+/**
+ * Delete contact resource
+ * @param {object} req - Request object
+ * @param {object} res - Response object
+ * @returns Promise
+ */
 export async function deleteContact(req, res) {
   logger.info('Delete contact resource');
 
@@ -12,7 +18,7 @@ export async function deleteContact(req, res) {
     const deletedContact = await contactService.deleteContact(id);
     const responseData = {
       status: 200,
-      message: 'Contact deleted successfully',
+      message: 'Contacto eliminado satisfactoriamente',
       data: { contact: deletedContact },
     };
     return respondSuccess(logger, res, responseData);

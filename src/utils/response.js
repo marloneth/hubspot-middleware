@@ -6,6 +6,14 @@ export function respondSuccess(logger, res, responseData) {
 
 export function respondError(logger, res, responseData) {
   logger.info('Sending error response');
-  const { status = 500, message = 'Server error', data = {} } = responseData;
-  return res.status(status).send({ message, data });
+
+  const {
+    status = 500,
+    message = 'Error en el servidor',
+    data = {},
+  } = responseData;
+  const errorToSend = status !== 500 ? message : 'Error en el servidor';
+
+  logger.error(message);
+  return res.status(status).send({ message: errorToSend, data });
 }

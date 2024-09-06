@@ -4,6 +4,12 @@ import { respondError, respondSuccess } from '../../utils/response';
 
 const logger = createLogger('resources/contact/updateContact.js');
 
+/**
+ * Update contact resource
+ * @param {object} req - Request object
+ * @param {object} res - Response object
+ * @returns Promise
+ */
 export async function updateContact(req, res) {
   logger.info('Update contact resource');
 
@@ -13,7 +19,7 @@ export async function updateContact(req, res) {
     const updatedContact = await contactService.updateContact(id, data);
     const responseData = {
       status: 200,
-      message: 'Contact updated successfully',
+      message: 'Contacto actualizado satisfactoriamente',
       data: { contact: updatedContact },
     };
     return respondSuccess(logger, res, responseData);

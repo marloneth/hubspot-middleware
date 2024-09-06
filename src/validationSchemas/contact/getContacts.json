@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "pattern": "^[\\w\\-.]+@([\\w\\-]+\\.)+[\\w\\-]{2,4}$"
+    }
+  },
+  "additionalProperties": false
+}

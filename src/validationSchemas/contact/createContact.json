@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "properties": {
+    "firstname": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lastname": {
+      "type": "string",
+      "minLength": 1
+    },
+    "email": {
+      "type": "string",
+      "pattern": "^[\\w\\-.]+@([\\w\\-]+\\.)+[\\w\\-]{2,4}$"
+    },
+    "phone": {
+      "type": "string",
+      "pattern": "^\\+?\\d{0,3}?\\d{10}$"
+    }
+  },
+  "required": ["firstname", "lastname", "email", "phone"],
+  "additionalProperties": false
+}

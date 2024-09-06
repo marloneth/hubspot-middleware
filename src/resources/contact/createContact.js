@@ -4,6 +4,12 @@ import { respondError, respondSuccess } from '../../utils/response';
 
 const logger = createLogger('resources/createContact.js');
 
+/**
+ * Create contact resource
+ * @param {object} req - Request object
+ * @param {object} res - Response object
+ * @returns Promise
+ */
 export async function createContact(req, res) {
   logger.debug('Create contact resource');
 
@@ -12,7 +18,7 @@ export async function createContact(req, res) {
     const newContact = await contactService.createContact(data);
     const responseData = {
       status: 201,
-      message: 'Contact created successfully',
+      message: 'Contacto creado satisfactoriamente',
       data: { contact: newContact },
     };
     return respondSuccess(logger, res, responseData);

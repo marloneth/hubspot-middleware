@@ -2,17 +2,17 @@ import { Router } from 'express';
 import {
   createContact,
   deleteContact,
-  getContactById,
   getContacts,
   updateContact,
 } from '../resources';
+import { createContactValidator, updateContactValidator } from '../validators';
+import { getContactsValidator } from '../validators/contact/getContacts';
 
 const contactRouter = Router();
 
-contactRouter.get('/', getContacts);
-contactRouter.get('/:id', getContactById);
-contactRouter.post('/', createContact);
-contactRouter.patch('/:id', updateContact);
+contactRouter.get('/', getContactsValidator, getContacts);
+contactRouter.post('/', createContactValidator, createContact);
+contactRouter.patch('/:id', updateContactValidator, updateContact);
 contactRouter.delete('/:id', deleteContact);
 
 export default contactRouter;
