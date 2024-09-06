@@ -26,14 +26,31 @@ export function createContactValidator(req, res, next) {
     let errorToSend = ajv.errorsText();
     const [validationError] = ajv.errors;
 
-    if (validationError.keyword === 'pattern') {
-      const instancePath = validationError.instancePath?.slice(1) || '';
-      const errorMessages = {
-        email: 'Correo electrónico no válido. Ej. example@domain.com',
-        phone: 'Teléfono no válido. Ej. +521234567890 ó 1234567890',
-      };
+    switch (validationError.keyword) {
+      case 'pattern': {
+        const instancePath = validationError.instancePath?.slice(1) || '';
+        const errorMessages = {
+          email: "Campo 'email' no válido. Ej. example@domain.com",
+          phone: "Campo 'phone' no válido. Ej. +521234567890 ó 1234567890",
+        };
 
-      errorToSend = errorMessages[instancePath] || errorToSend;
+        errorToSend = errorMessages[instancePath] || errorToSend;
+        break;
+      }
+      case 'additionalProperties': {
+        errorToSend =
+          'La data proporcionada tiene propiedades adicionales no requeridas';
+        break;
+      }
+      case 'required': {
+        errorToSend = `Falta el campo '${validationError.params.missingProperty}' en el body`;
+        break;
+      }
+      case 'minLength': {
+        const instancePath = validationError.instancePath?.slice(1) || '';
+        errorToSend = `El campo '${instancePath}' no puede ser un string vacío`;
+        break;
+      }
     }
 
     throw createError.UnprocessableEntity(errorToSend);
