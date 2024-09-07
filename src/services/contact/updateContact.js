@@ -18,11 +18,15 @@ export async function updateContact(id, data) {
     return updatedContact;
   } catch (error) {
     switch (error.code) {
+      case 400:
+        throw createError.BadRequest(
+          'No se recibió ninguna propiedad para editar, porfavor proporcionar al menos una'
+        );
       case 404:
         throw createError.NotFound(`Contacto con el id ${id} no existe`);
       case 409:
         throw createError.Conflict(
-          `Contacto con el correo electrónico proporcionado ya existe`
+          'Ya existe un contacto con el correo electrónico proporcionado'
         );
       default:
         throw error;

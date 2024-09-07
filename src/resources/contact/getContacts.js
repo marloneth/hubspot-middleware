@@ -19,7 +19,7 @@ export async function getContacts(req, res) {
     const responseData = {
       status: 200,
       message: 'Contactos obtenidos satisfactoriamente',
-      data: contacts,
+      data: { contacts },
     };
     return respondSuccess(logger, res, responseData);
   } catch (error) {

@@ -47,6 +47,13 @@ export function updateContactValidator(req, res, next) {
         errorToSend = `El campo '${instancePath}' no puede ser un string vacío`;
         break;
       }
+      case 'type': {
+        const instancePath = validationError.instancePath?.slice(1) || '';
+        errorToSend = instancePath
+          ? `El campo '${instancePath}' debe ser de tipo '${validationError.params.type}'`
+          : `El body debe ser tipo '${validationError.params.type}'`;
+        break;
+      }
     }
 
     throw createError.UnprocessableEntity(errorToSend);

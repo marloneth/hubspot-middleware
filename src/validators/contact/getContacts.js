@@ -26,7 +26,7 @@ export function getContactsValidator(req, res, next) {
     const [validationError] = ajv.errors;
     const defaultErrorMessage = 'Query params inválidos';
     const errorMessages = {
-      additionalProperties: `${validationError.params.additionalProperty} no es un query param permitido`,
+      additionalProperties: `'${validationError.params.additionalProperty}' no es un query param permitido`,
       pattern: 'Correo electrónico no válido. Ej. example@domain.com',
     };
 
