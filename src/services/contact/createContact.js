@@ -2,7 +2,7 @@ import { createLogger } from '../../config/logger.js';
 import * as hubspotService from '../../utils/hubspot.js';
 import createError from 'http-errors';
 
-const logger = createLogger('services/createContact.js');
+const logger = createLogger('services/contact/createContact.js');
 
 /**
  * Create contact service

@@ -2,7 +2,7 @@ import { createLogger } from '../../config/logger';
 import * as contactService from '../../services/contact';
 import { respondError, respondSuccess } from '../../utils/response';
 
-const logger = createLogger('resources/createContact.js');
+const logger = createLogger('resources/contact/createContact.js');
 
 /**
  * Create contact resource
