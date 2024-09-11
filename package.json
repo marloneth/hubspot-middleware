@@ -3,15 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
+  "author": {
+    "name": "Marlon Esteban Torres Huerta",
+    "url": "https://github.com/marloneth"
+  },
   "scripts": {
     "start": "npm run build && node ./build/index.js",
     "start:dev": "nodemon --exec babel-node ./src/index.js",
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel-node -r dotenv/config src/index.js",
     "build": "npm run clean && npm run build-babel",
-    "test": "jest"
+    "test": "jest --watchAll"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "@hubspot/api-client": "^11.2.0",
